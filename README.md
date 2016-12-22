@@ -2,6 +2,7 @@
 
 This image contains a instance of sshd configured as SFTP server only and a SSSD configured to run as a ldap client.
 
+:warning:  Still in development
 
 ### Example of usage
 
