@@ -12,6 +12,8 @@ ENV LDAP_TLS_STARTTLS false
 #ENV LDAP_TLS_CERT /etc/ssl/cert.crt
 #ENV LDAP_TLS_KEY /etc/ssl/cert.key
 
+ENV LDAP_ATTR_SSHPUBLICKEY sshPublicKey
+
 # Install dependencies
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \

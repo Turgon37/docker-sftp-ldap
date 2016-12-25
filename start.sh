@@ -19,6 +19,7 @@ enableSSSDConfig() {
 setSSSDConfig 'LDAP_URI' "${LDAP_URI}"
 setSSSDConfig 'LDAP_BASE_ROOT' "${LDAP_BASE}"
 setSSSDConfig 'LDAP_TLS_STARTTLS' "${LDAP_TLS_STARTTLS}"
+setSSSDConfig 'LDAP_ATTR_SSHPUBLICKEY' "${LDAP_ATTR_SSHPUBLICKEY}"
 
 # Set LDAP base for users entities is set
 if [ -n "$LDAP_BASE_USER" ]; then
