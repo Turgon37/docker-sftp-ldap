@@ -1,19 +1,19 @@
 FROM debian:jessie
 MAINTAINER Pierre GINDRAUD <pgindraud@gmail.com>
 
-ENV LDAP_URI ldap://ldap.host.net/ \
-    LDAP_BASE dc=example,dc=com \
-    LDAP_TLS_STARTTLS false \
-    LDAP_HOMEDIR %u \
-    LDAP_ATTR_SSHPUBLICKEY sshPublicKey \
-    SFTP_CHROOT /data
-#   LDAP_BASE_USER cn=users,dc=example,dc=com
-#   LDAP_BASE_GROUP cn=groups,dc=example,dc=com
-#   LDAP_BIND_USER cn=sssd,dc=example,dc=net
-#   LDAP_BIND_PWD xxxxxxxx
-#   LDAP_TLS_CACERT /etc/ssl/ca.crt
-#   LDAP_TLS_CERT /etc/ssl/cert.crt
-#   LDAP_TLS_KEY /etc/ssl/cert.key
+ENV LDAP_URI=ldap://ldap.host.net/ \
+    LDAP_BASE=dc=example,dc=com \
+    LDAP_TLS_STARTTLS=false \
+    LDAP_HOMEDIR=%u \
+    LDAP_ATTR_SSHPUBLICKEY=sshPublicKey \
+    SFTP_CHROOT=/data
+#   LDAP_BASE_USER=cn=users,dc=example,dc=com
+#   LDAP_BASE_GROUP=cn=groups,dc=example,dc=com
+#   LDAP_BIND_USER=cn=sssd,dc=example,dc=net
+#   LDAP_BIND_PWD=xxxxxxxx
+#   LDAP_TLS_CACERT=/etc/ssl/ca.crt
+#   LDAP_TLS_CERT=/etc/ssl/cert.crt
+#   LDAP_TLS_KEY=/etc/ssl/cert.key
 
 # Install dependencies
 RUN apt-get update && \
