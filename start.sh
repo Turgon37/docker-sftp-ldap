@@ -15,11 +15,20 @@ enableSSSDConfig() {
   sed -i "s|^#${1}|${1}|" /etc/sssd/sssd.conf
 }
 
+# Set a config value into sssd.conf
+# $1 : the name of the config to set
+# $2 : the value of the config
+setSSHDConfig() {
+  sed -i "s|${1}|${2}|" /etc/ssh/sshd_config
+}
+
 # Set permanents configs
 setSSSDConfig 'LDAP_URI' "${LDAP_URI}"
 setSSSDConfig 'LDAP_BASE_ROOT' "${LDAP_BASE}"
 setSSSDConfig 'LDAP_TLS_STARTTLS' "${LDAP_TLS_STARTTLS}"
+setSSSDConfig 'LDAP_HOMEDIR' "${LDAP_HOMEDIR}"
 setSSSDConfig 'LDAP_ATTR_SSHPUBLICKEY' "${LDAP_ATTR_SSHPUBLICKEY}"
+setSSHDConfig 'SFTP_CHROOT' "${SFTP_CHROOT}"
 
 # Set LDAP base for users entities is set
 if [ -n "$LDAP_BASE_USER" ]; then

@@ -10,7 +10,9 @@ ENV LDAP_URI ldap://ldap.host.net/ \
 #   LDAP_TLS_CACERT /etc/ssl/ca.crt \
 #   LDAP_TLS_CERT /etc/ssl/cert.crt \
 #   LDAP_TLS_KEY /etc/ssl/cert.key \
-    LDAP_ATTR_SSHPUBLICKEY sshPublicKey
+    LDAP_HOMEDIR %u \
+    LDAP_ATTR_SSHPUBLICKEY sshPublicKey \
+    SFTP_CHROOT /data
 
 # Install dependencies
 RUN apt-get update && \
@@ -28,7 +30,7 @@ RUN apt-get update && \
     echo 'AuthorizedKeysCommand /usr/bin/sss_ssh_authorizedkeys' >> /etc/ssh/sshd_config && \
     sed -i 's|sftp-server$|sftp-server -e -u 002|' /etc/ssh/sshd_config && \
     echo 'ForceCommand internal-sftp' >> /etc/ssh/sshd_config && \
-    echo 'ChrootDirectory /data' >> /etc/ssh/sshd_config
+    echo 'ChrootDirectory SFTP_CHROOT' >> /etc/ssh/sshd_config
 
 COPY sssd.conf  /etc/sssd/sssd.conf
 COPY supervisord.conf /etc/supervisord.conf
