@@ -17,7 +17,7 @@ enableSSSDConfig() {
 
 # Set permanents configs
 setSSSDConfig 'LDAP_URI' "${LDAP_URI}"
-setSSSDConfig 'LDAP_BASE' "${LDAP_BASE}"
+setSSSDConfig 'LDAP_BASE_ROOT' "${LDAP_BASE}"
 setSSSDConfig 'LDAP_TLS_STARTTLS' "${LDAP_TLS_STARTTLS}"
 
 # Set LDAP base for users entities is set
