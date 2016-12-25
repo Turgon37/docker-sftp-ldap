@@ -66,6 +66,7 @@ docker run -p 22:22 -e "LDAP_URI=ldap://ldap.domain.com" -e "LDAP_BASE=dc=domain
 First you will to create a account for sftp service. Refer to you IPA web interface for this. Once the service is create, you must add a password to the corresponding LDAP entity
 Then you have to create a docker-compose entry like this
 
+```
 homes-sftp:
     image: turgon37/sftp-ldap
     environment:
@@ -84,5 +85,6 @@ homes-sftp:
     volumes:
       - "/mnt/homes/:/data/homes"
       - "/etc/ssl/Root-ca.pem:/etc/ssl/ca.pem:ro"
+```
 
 You should now, have a running SFTP server on port 2222. You can login using Login + (password or ssh-private key)
