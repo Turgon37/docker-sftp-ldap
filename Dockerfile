@@ -33,6 +33,6 @@ RUN chown root:root /data && \
     chmod +x /start.sh
 
 EXPOSE 22
-VOLUME ['/data']
+VOLUME ["/data"]
 
 CMD ["/start.sh"]
