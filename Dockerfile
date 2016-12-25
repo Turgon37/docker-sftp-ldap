@@ -14,7 +14,7 @@ ENV LDAP_URI ldap://ldap.host.net/ \
 
 # Install dependencies
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
+    apt-get install -y \
     openssh-server openssh-sftp-server sssd-ldap libnss-sss libpam-sss \
     supervisor && \
     apt-get autoremove && \
