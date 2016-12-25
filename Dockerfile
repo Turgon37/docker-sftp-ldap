@@ -15,7 +15,7 @@ ENV LDAP_TLS_STARTTLS false
 # Install dependencies
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-    openssh-server openssh-sftp-server sssd-ldap \
+    openssh-server openssh-sftp-server sssd-ldap libnss-sss libpam-sss \
     supervisor && \
     apt-get autoremove && \
     apt-get clean && \
