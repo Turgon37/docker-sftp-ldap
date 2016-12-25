@@ -1,18 +1,16 @@
 FROM debian:jessie
 MAINTAINER Pierre GINDRAUD <pgindraud@gmail.com>
 
-ENV LDAP_URI ldap://ldap.host.net/
-ENV LDAP_BASE dc=example,dc=com
-#ENV LDAP_BASE_USER
-#ENV LDAP_BIND_USER cn=sssd,dc=example,dc=net
-#ENV LDAP_BIND_PWD xxxxxxxx
-
-ENV LDAP_TLS_STARTTLS false
-#ENV LDAP_TLS_CACERT /etc/ssl/ca.crt
-#ENV LDAP_TLS_CERT /etc/ssl/cert.crt
-#ENV LDAP_TLS_KEY /etc/ssl/cert.key
-
-ENV LDAP_ATTR_SSHPUBLICKEY sshPublicKey
+ENV LDAP_URI ldap://ldap.host.net/ \
+    LDAP_BASE dc=example,dc=com \
+#   LDAP_BASE_USER cn=users,dc=example,dc=com \
+#   LDAP_BIND_USER cn=sssd,dc=example,dc=net \
+#   LDAP_BIND_PWD xxxxxxxx \
+    LDAP_TLS_STARTTLS false \
+#   LDAP_TLS_CACERT /etc/ssl/ca.crt \
+#   LDAP_TLS_CERT /etc/ssl/cert.crt \
+#   LDAP_TLS_KEY /etc/ssl/cert.key \
+    LDAP_ATTR_SSHPUBLICKEY sshPublicKey
 
 # Install dependencies
 RUN apt-get update && \
