@@ -36,6 +36,13 @@ if [ -n "$LDAP_BASE_USER" ]; then
   setSSSDConfig 'LDAP_BASE_USER' "${LDAP_BASE_USER}"
 fi
 
+# Set LDAP base for groups entities is set
+if [ -n "$LDAP_BASE_GROUP" ]; then
+  enableSSSDConfig ldap_group_search_base
+  setSSSDConfig 'LDAP_BASE_GROUP' "${LDAP_BASE_GROUP}"
+fi
+
+
 # Configure authentication of sssd ldap client if needed
 if [ -n "$LDAP_BIND_USER" -a -n "$LDAP_BIND_PWD" ]; then
   enableSSSDConfig ldap_default_bind_dn
