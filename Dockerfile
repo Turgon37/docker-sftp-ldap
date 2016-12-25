@@ -23,6 +23,7 @@ RUN apt-get update && \
     apt-get autoremove && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
+    rm -f /etc/ssh/ssh_host_*key* && \
     mkdir /var/run/sshd && chmod 0755 /var/run/sshd && \
     mkdir -p /data && \
     sed -i 's|^AuthorizedKeysFile|#AuthorizedKeysFile|' /etc/ssh/sshd_config && \
