@@ -1,5 +1,8 @@
 # Docker SFTP over LDAP backend
 
+[![](https://images.microbadger.com/badges/image/turgon37/sftp-ldap.svg)](https://microbadger.com/images/turgon37/sftp-ldap "Get your own image badge on microbadger.com")
+[![](https://images.microbadger.com/badges/version/turgon37/sftp-ldap.svg)](https://microbadger.com/images/turgon37/sftp-ldap "Get your own version badge on microbadger.com")
+
 This image contains a instance of sshd configured as SFTP server only and a SSSD configured to run as a ldap client.
 
 ### Example of usage
