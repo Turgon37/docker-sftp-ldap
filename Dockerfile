@@ -19,8 +19,8 @@ ENV LDAP_URI=ldap://ldap.host.net/ \
 RUN apt-get update && apt-get install -y \
     libnss-sss \
     libpam-sss \
-    openssh-server
-    openssh-sftp-server
+    openssh-server \
+    openssh-sftp-server \
     sssd-ldap \
     supervisor && \
     
