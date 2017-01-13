@@ -16,16 +16,22 @@ ENV LDAP_URI=ldap://ldap.host.net/ \
 #   LDAP_TLS_KEY=/etc/ssl/cert.key
 
 # Install dependencies
-RUN apt-get update && \
-    apt-get install -y \
-    openssh-server openssh-sftp-server sssd-ldap libnss-sss libpam-sss \
+RUN apt-get update && apt-get install -y \
+    libnss-sss \
+    libpam-sss \
+    openssh-server
+    openssh-sftp-server
+    sssd-ldap \
     supervisor && \
-    apt-get autoremove && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/* && \
+    
+# clean dependencies
+    apt-get autoremove && apt-get clean && rm -rf /var/lib/apt/lists/* && \
+# remove default debian keys
     rm -f /etc/ssh/ssh_host_*key* && \
     mkdir /var/run/sshd && chmod 0755 /var/run/sshd && \
+# prepare data dir
     mkdir -p /data && \
+# configure sshd
     sed -i 's|^AuthorizedKeysFile|#AuthorizedKeysFile|' /etc/ssh/sshd_config && \
     echo 'AuthorizedKeysFile /dev/null' >> /etc/ssh/sshd_config && \
     echo 'AuthorizedKeysCommandUser nobody' >> /etc/ssh/sshd_config && \
