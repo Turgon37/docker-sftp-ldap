@@ -23,7 +23,7 @@ RUN apt-get update && apt-get install -y \
     openssh-sftp-server \
     sssd-ldap \
     supervisor && \
-    
+
 # clean dependencies
     apt-get autoremove && apt-get clean && rm -rf /var/lib/apt/lists/* && \
 # remove default debian keys
@@ -40,9 +40,8 @@ RUN apt-get update && apt-get install -y \
     echo 'ForceCommand internal-sftp' >> /etc/ssh/sshd_config && \
     echo 'ChrootDirectory SFTP_CHROOT' >> /etc/ssh/sshd_config
 
-COPY sssd.conf  /etc/sssd/sssd.conf
-COPY supervisord.conf /etc/supervisord.conf
-COPY start.sh /start.sh
+# copy local files
+COPY root/ /
 
 RUN chown root:root /data && \
     chmod 755 /data && \
