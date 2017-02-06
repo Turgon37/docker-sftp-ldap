@@ -17,7 +17,7 @@ You can use it to allow you owncloud/nextcloud instance to mount the user's home
 | ----------------- | ---------------       |
 | 22                | SFTP port             |
 
-   * This volume is bind on this image
+   * The following volume is exposed by this image
 
 | Volume| Usage                                                 |
 | ----- | ----------------------------------------------------- |
