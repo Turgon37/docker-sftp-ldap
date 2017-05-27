@@ -50,5 +50,6 @@ RUN chown root:root /data && \
 
 EXPOSE 22
 VOLUME ["/data"]
+WORKDIR /data
 
 CMD ["/start.sh"]
