@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM debian:stretch
 MAINTAINER Pierre GINDRAUD <pgindraud@gmail.com>
 
 ENV LDAP_URI=ldap://ldap.host.net/ \
@@ -17,21 +17,21 @@ ENV LDAP_URI=ldap://ldap.host.net/ \
 
 # Install dependencies
 RUN apt-get update && apt-get install -y \
-    libnss-sss \
-    libpam-sss \
-    openssh-server \
-    openssh-sftp-server \
-    sssd-ldap \
-    supervisor && \
+      libnss-sss \
+      libpam-sss \
+      openssh-server \
+      openssh-sftp-server \
+      sssd-ldap \
+      supervisor && \
 
-# clean dependencies
+# Clean dependencies
     apt-get autoremove && apt-get clean && rm -rf /var/lib/apt/lists/* && \
-# remove default debian keys
+# Remove default debian keys
     rm -f /etc/ssh/ssh_host_*key* && \
     mkdir /var/run/sshd && chmod 0755 /var/run/sshd && \
-# prepare data dir
+# Prepare data dir
     mkdir -p /data && \
-# configure sshd
+# Configure sshd
     sed -i 's|^AuthorizedKeysFile|#AuthorizedKeysFile|' /etc/ssh/sshd_config && \
     echo 'AuthorizedKeysFile /dev/null' >> /etc/ssh/sshd_config && \
     echo 'AuthorizedKeysCommandUser nobody' >> /etc/ssh/sshd_config && \
